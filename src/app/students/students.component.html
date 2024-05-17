@@ -1,0 +1,49 @@
+<div class="container bg-light p-4">
+  <div class="row">
+    <div class="col-7 m-auto">
+      <h1 class="text-center">Cadastro dos Alunos</h1>
+      <form [formGroup]="studentFormGroup">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome:</label>
+          <input type="text"
+                 class="form-control"
+                 id="nome"
+                 formControlName="name"
+          />
+          <small *ngIf="submitted && name.hasError('required')" class="text-danger">Requer Nome!</small>
+          <small *ngIf="submitted && name.hasError('minlength')" class="text-danger">O nome precisa ter 3 digitos ou mais!</small>
+        </div>
+        <div class="mb-3">
+          <label for="curso" class="form-label">Curso:</label>
+          <select class="form-select" id="curso" aria-label="Default select example" formControlName="course">
+            <option *ngFor="let course of courses" [ngValue]="course.id">{{course.name}}</option>
+          </select>
+          <small *ngIf="submitted && course.hasError('required')" class="text-danger">Requer Curso!</small>
+        </div>
+        <button class="btn btn-primary" (click)="save()">Salvar</button>
+      </form>
+      <h1 class="text-center mt-3">Lista de Alunos</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Matricula</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Curso</th>
+            <th scope="col" class="text-center">Opções</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of students">
+            <td>{{s.id}}</td>
+            <td>{{s.name}}</td>
+            <td>{{courses[(s.course - 1)].name}}</td>
+            <td class="text-center">
+              <button type="button" class="btn btn-primary me-3" (click)="update(s)">Editar</button>
+              <button type="button" class="btn btn-danger" (click)="delete(s)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

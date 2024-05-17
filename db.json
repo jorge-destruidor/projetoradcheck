@@ -1,0 +1,33 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "name": "João",
+      "course": 1
+    },
+    {
+      "id": "2",
+      "name": "Pedro",
+      "course": 2
+    },
+    {
+      "id": "3",
+      "name": "Julia",
+      "course": 3
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "name": "ADS"
+    },
+    {
+      "id": "2",
+      "name": "ADM"
+    },
+    {
+      "id": "3",
+      "name": "TDI"
+    }
+  ]
+}
